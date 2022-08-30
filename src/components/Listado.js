@@ -7,10 +7,19 @@ import React from 'react'
 // MÉTODOS: Listado no requiere de métodos.
 // PROPS: Listado recibe el método para aumentar el estado de App y se lo pasa a cada uno de sus hijos.
 
-export default function Listado() {
+import Item from './Item';
+import producto from './data.json';
+ 
+export default function Listado(props) {
+
+
   return (
     <div className='container'>
-      {/* renderizamos los Item aquí */}
+      
+      {producto.map((producto,id) =>
+        <Item key={producto.id} nombre={producto.producto.nombre} descripcion={producto.producto.descripcion} stock={producto.stock} sumar={props.sumar}/> 
+    )
+    }
     </div>
-  )
+  );
 }
